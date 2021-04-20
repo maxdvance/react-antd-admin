@@ -1,15 +1,12 @@
 import React, { useRef, useState } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
-import ProTable from '@ant-design/pro-table';
-import { custom } from '@/services/ant-design-pro/api';
-import { Image } from 'antd';
-import { Button } from 'antd';
+import { Image, Button, message } from 'antd';
 import { StatisticCard } from '@ant-design/pro-card';
-import { message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
-
-const moment = require('moment');
-const axios = require('axios').default;
+import ProTable from '@ant-design/pro-table';
+import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import { custom } from '@/services/ant-design-pro/api';
+import moment from 'moment';
+import axios from 'axios';
 
 const success = () => {
   message.success('status updated');
@@ -73,14 +70,14 @@ const TestList: React.FC = () => {
     },
     {
       title: 'Create Time',
-      sorter: (a, b) => a.created_at - b.created_at,
+      sorter: (a, b) => moment(a.created_at).unix() - moment(b.created_at).unix(),
       dataIndex: 'created_at',
       valueType: 'dateTime',
     },
     {
       title: 'Update Time',
       onFilter: true,
-      sorter: true,
+      sorter: (a, b) => moment(a.updated_at).unix() - moment(b.updated_at).unix(),
       dataIndex: 'updated_at',
       valueType: 'dateTime',
     },

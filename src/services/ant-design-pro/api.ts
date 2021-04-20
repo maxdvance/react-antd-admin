@@ -18,7 +18,7 @@ export async function custom(
       method: 'GET',
       params: {
         ...params,
-        ...(options || {}),
+        //...(options || {}), for backend sort
       },
     },
   );
