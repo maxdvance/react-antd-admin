@@ -109,7 +109,7 @@ declare namespace API {
   type CustomItemType = 'fault' | 'normal' | 'undetermined';
 
   type CustomItem = {
-    id?: string;
+    item_id?: string;
     name?: string;
     image?: string;
     status?: CustomItemType;

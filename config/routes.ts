@@ -17,13 +17,13 @@ export default [
   },
   {
     path: '/welcome',
-    name: 'welcome',
+    name: 'Welcome',
     icon: 'smile',
     component: './Welcome',
   },
   {
     path: '/admin',
-    name: 'admin',
+    name: 'Admin',
     icon: 'crown',
     access: 'canAdmin',
     component: './Admin',
@@ -37,16 +37,10 @@ export default [
     ],
   },
   {
-    name: 'list.table-list',
+    name: 'Table',
     icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
-  {
-    name: 'Test Table',
-    icon: 'table',
-    path: '/testlist',
-    component: './TestList',
+    path: '/table',
+    component: './Table',
   },
   {
     path: '/',

@@ -2,6 +2,38 @@
 /* eslint-disable */
 import { request } from 'umi';
 
+export async function custom(
+  params: {
+    // query
+    /** 当前的页码 */
+    current?: number;
+    /** 页面的容量 */
+    pageSize?: number;
+  },
+  options?: { [key: string]: any },
+) {
+  return request<API.CustomItemList>(
+    'https://7m2o1d1ue4.execute-api.ap-east-1.amazonaws.com/dev/items',
+    {
+      method: 'GET',
+      params: {
+        ...params,
+        ...(options || {}),
+      },
+    },
+  );
+}
+
+export async function updateCustom(options?: { [key: string]: any }) {
+  return request<API.RuleListItem>(
+    'https://7m2o1d1ue4.execute-api.ap-east-1.amazonaws.com/dev/items/',
+    {
+      method: 'PATCH',
+      ...(options || {}),
+    },
+  );
+}
+
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
   return request<API.CurrentUser>('/api/currentUser', {
@@ -78,44 +110,6 @@ export async function addRule(options?: { [key: string]: any }) {
 export async function removeRule(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/rule', {
     method: 'DELETE',
-    ...(options || {}),
-  });
-}
-
-export async function notices(
-  params: {
-    // query
-    /** 当前的页码 */
-    current?: number;
-    /** 页面的容量 */
-    pageSize?: number;
-  },
-  options?: { [key: string]: any },
-) {
-  return request<API.NoticeIconList>('/api/notices', {
-    method: 'GET',
-    params: {
-      ...params,
-    },
-    ...(options || {}),
-  });
-}
-
-export async function custom(
-  params: {
-    // query
-    /** 当前的页码 */
-    current?: number;
-    /** 页面的容量 */
-    pageSize?: number;
-  },
-  options?: { [key: string]: any },
-) {
-  return request<API.CustomItemList>('https://7m2o1d1ue4.execute-api.ap-east-1.amazonaws.com/dev/items', {
-    method: 'GET',
-    params: {
-      ...params,
-    },
     ...(options || {}),
   });
 }
